@@ -1,16 +1,11 @@
-using Airport_Tickets_System;
 using Airport_Tickets_System.models;
 using Airport_Tickets_System.states;
 
-namespace AirPortTickets;
-
-
-
-
+namespace Airport_Tickets_System;
 
 public class LoginPage
 {
-    private Repository _repository = new Repository();
+    private readonly Repository _repository = new Repository();
     public LoginState Login()
     {
         var user = ReadUserInput();

@@ -5,14 +5,14 @@ namespace Airport_Tickets_System.Database;
 
 public class LoginDataBase
 {
-    private string[] lines = File.ReadAllLines(
+    private readonly string[] _lines = File.ReadAllLines(
         Path.Combine(AppContext.BaseDirectory, "DataFiles", "UsersCredentials.csv")
     );
 
     public LoginState ValidateUserCredentials(User user)
     {
         var matchedUser =
-            (from line in lines.Skip(1) 
+            (from line in _lines.Skip(1) 
                 let parts = line.Split(',')
                 where parts[0].Trim() == user.Username && parts[1].Trim() == user.Password
                 select parts).FirstOrDefault();

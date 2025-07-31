@@ -1,15 +1,14 @@
 ﻿using Airport_Tickets_System.states;
-using AirPortTickets;
 
 namespace Airport_Tickets_System
 {
     class MainPoint
     {
-        private static LoginPage loginPage = new LoginPage();
+        private static readonly LoginPage LoginPage = new LoginPage();
 
         static void Main(string[] args)
         {
-            var loginState = loginPage.Login();
+            var loginState = LoginPage.Login();
             switch (loginState)
             {
                 case LoginState.PassengerLoggedIn:

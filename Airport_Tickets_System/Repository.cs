@@ -7,7 +7,7 @@ namespace Airport_Tickets_System;
 public class Repository
 {
  
-    private LoginDataBase _loginDataBase = new LoginDataBase();
+    private readonly LoginDataBase _loginDataBase = new LoginDataBase();
 
     public LoginState ValidateUserCredentials(User user)
     {
