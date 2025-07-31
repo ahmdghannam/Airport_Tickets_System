@@ -1,0 +1,14 @@
+E:\Prog24\Foothill BE-25\C#\Airport_Tickets_System\Airport_Tickets_System\Airport_Tickets_System\bin\Debug\net9.0\Airport_Tickets_System.exe
+E:\Prog24\Foothill BE-25\C#\Airport_Tickets_System\Airport_Tickets_System\Airport_Tickets_System\bin\Debug\net9.0\Airport_Tickets_System.deps.json
+E:\Prog24\Foothill BE-25\C#\Airport_Tickets_System\Airport_Tickets_System\Airport_Tickets_System\bin\Debug\net9.0\Airport_Tickets_System.runtimeconfig.json
+E:\Prog24\Foothill BE-25\C#\Airport_Tickets_System\Airport_Tickets_System\Airport_Tickets_System\bin\Debug\net9.0\Airport_Tickets_System.dll
+E:\Prog24\Foothill BE-25\C#\Airport_Tickets_System\Airport_Tickets_System\Airport_Tickets_System\bin\Debug\net9.0\Airport_Tickets_System.pdb
+E:\Prog24\Foothill BE-25\C#\Airport_Tickets_System\Airport_Tickets_System\Airport_Tickets_System\obj\Debug\net9.0\Airport_Tickets_System.GeneratedMSBuildEditorConfig.editorconfig
+E:\Prog24\Foothill BE-25\C#\Airport_Tickets_System\Airport_Tickets_System\Airport_Tickets_System\obj\Debug\net9.0\Airport_Tickets_System.AssemblyInfoInputs.cache
+E:\Prog24\Foothill BE-25\C#\Airport_Tickets_System\Airport_Tickets_System\Airport_Tickets_System\obj\Debug\net9.0\Airport_Tickets_System.AssemblyInfo.cs
+E:\Prog24\Foothill BE-25\C#\Airport_Tickets_System\Airport_Tickets_System\Airport_Tickets_System\obj\Debug\net9.0\Airport_Tickets_System.csproj.CoreCompileInputs.cache
+E:\Prog24\Foothill BE-25\C#\Airport_Tickets_System\Airport_Tickets_System\Airport_Tickets_System\obj\Debug\net9.0\Airport_Tickets_System.dll
+E:\Prog24\Foothill BE-25\C#\Airport_Tickets_System\Airport_Tickets_System\Airport_Tickets_System\obj\Debug\net9.0\refint\Airport_Tickets_System.dll
+E:\Prog24\Foothill BE-25\C#\Airport_Tickets_System\Airport_Tickets_System\Airport_Tickets_System\obj\Debug\net9.0\Airport_Tickets_System.pdb
+E:\Prog24\Foothill BE-25\C#\Airport_Tickets_System\Airport_Tickets_System\Airport_Tickets_System\obj\Debug\net9.0\Airport_Tickets_System.genruntimeconfig.cache
+E:\Prog24\Foothill BE-25\C#\Airport_Tickets_System\Airport_Tickets_System\Airport_Tickets_System\obj\Debug\net9.0\ref\Airport_Tickets_System.dll
