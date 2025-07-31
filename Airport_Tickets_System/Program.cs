@@ -20,6 +20,8 @@ namespace Airport_Tickets_System
                 case LoginState.LoggingInFailed:
                     Console.WriteLine("Logging in failed");
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
     }
