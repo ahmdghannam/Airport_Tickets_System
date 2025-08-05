@@ -1,12 +1,11 @@
-﻿using System.Collections.ObjectModel;
-using Airport_Tickets_System.states;
+﻿using Airport_Tickets_System.states;
 
-namespace Airport_Tickets_System
+namespace Airport_Tickets_System.UI
 {
     internal static class MainPoint
     {
         private static readonly LoginPage LoginPage = new LoginPage();
-
+        private static readonly AdminPage AdminPage = new AdminPage();
         static void Main(string[] args)
         {
             var loginState = LoginPage.Login();
@@ -17,6 +16,7 @@ namespace Airport_Tickets_System
                     break;
                 case LoginState.AdminLoggedIn:
                     Console.WriteLine("Admin logged in");
+                    AdminPage.Start();
                     break;
                 case LoginState.LoggingInFailed:
                     Console.WriteLine("Logging in failed");
