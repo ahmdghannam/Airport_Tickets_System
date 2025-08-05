@@ -1,1 +1,1 @@
-id, passengerId, state, registrationDate
+id,   passengerId, flightId, class
