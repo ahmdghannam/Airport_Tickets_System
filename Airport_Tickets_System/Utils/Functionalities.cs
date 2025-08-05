@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+
 namespace Airport_Tickets_System.Utils;
 
 public class Functionalities
@@ -13,5 +15,9 @@ public class Functionalities
         }
 
         return dir;
+    }
+    public static bool ContainsNonAlphabetical(string input)
+    {
+        return !Regex.IsMatch(input, @"^[a-zA-Z\s]*$");
     }
 }

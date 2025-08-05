@@ -7,7 +7,7 @@ namespace Airport_Tickets_System.Database;
 public class LoginDataBase
 {
     private readonly string[] _lines = File.ReadAllLines(
-        Path.Combine(AppContext.BaseDirectory, "DataFiles", Constants.Files.UsersCredentials)
+        Path.Combine(AppContext.BaseDirectory, "DataFiles", Consts.Files.UsersCredentials)
     );
 
     public LoginState ValidateUserCredentials(User user)
