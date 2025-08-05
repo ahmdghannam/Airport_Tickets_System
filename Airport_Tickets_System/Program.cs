@@ -1,8 +1,9 @@
-﻿using Airport_Tickets_System.states;
+﻿using System.Collections.ObjectModel;
+using Airport_Tickets_System.states;
 
 namespace Airport_Tickets_System
 {
-    class MainPoint
+    internal static class MainPoint
     {
         private static readonly LoginPage LoginPage = new LoginPage();
 
@@ -20,6 +21,8 @@ namespace Airport_Tickets_System
                 case LoginState.LoggingInFailed:
                     Console.WriteLine("Logging in failed");
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
     }
