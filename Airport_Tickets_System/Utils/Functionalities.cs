@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace Airport_Tickets_System.Utils;
 
@@ -20,4 +21,5 @@ public class Functionalities
     {
         return !Regex.IsMatch(input, @"^[a-zA-Z\s]*$");
     }
+    
 }

@@ -12,14 +12,14 @@ public class AdminPage
 
     public void Start()
     {
-        var result = getUserChoiceOrNull();
+        var result = GetUserChoiceOrNull();
         switch (result)
         {
             case 1:
-                Console.WriteLine("Show all bookings");
+                ShowingAllBookings();
                 break;
             case 2:
-                Console.WriteLine("Show bookings with filter");
+                FilterBookings();
                 break;
             case 3:
                 ImportFlightData();
@@ -30,7 +30,90 @@ public class AdminPage
         }
     }
 
-    private int? getUserChoiceOrNull()
+    private void FilterBookings()
+    {
+        Console.WriteLine("=== Filter Bookings ===");
+
+        Console.Write("Enter Departure Country (leave blank for no filter): ");
+        string departureCountry = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(departureCountry))
+            departureCountry = null;
+
+        Console.Write("Enter Destination Country (leave blank for no filter): ");
+        string destinationCountry = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(destinationCountry))
+            destinationCountry = null;
+
+        Console.Write("Enter Price (leave blank for no filter): ");
+        string priceInput = Console.ReadLine();
+        decimal? price = null;
+        if (!string.IsNullOrWhiteSpace(priceInput) && decimal.TryParse(priceInput, out decimal parsedPrice))
+            price = parsedPrice;
+
+        Console.Write("Enter Departure Date (yyyy-MM-dd) (leave blank for no filter): ");
+        string dateInput = Console.ReadLine();
+        DateTime? departureDate = null;
+        if (!string.IsNullOrWhiteSpace(dateInput) && DateTime.TryParse(dateInput, out DateTime parsedDate))
+            departureDate = parsedDate;
+
+        Console.Write("Enter Departure Airport (leave blank for no filter): ");
+        string departureAirport = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(departureAirport))
+            departureAirport = null;
+
+        Console.Write("Enter Arrival Airport (leave blank for no filter): ");
+        string arrivalAirport = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(arrivalAirport))
+            arrivalAirport = null;
+
+        Console.Write("Enter Passenger Name (leave blank for no filter): ");
+        string passengerName = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(passengerName))
+            passengerName = null;
+
+        Console.Write("Enter Booking Class (leave blank for no filter): ");
+        string bookingClass = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(bookingClass))
+            bookingClass = null;
+
+        var filteredBookings = _repository.FilterBookings(
+            departureCountry,
+            destinationCountry,
+            price,
+            departureDate,
+            departureAirport,
+            arrivalAirport,
+            passengerName,
+            bookingClass
+        );
+
+        Console.WriteLine("\n=== Filtered Bookings ===");
+        foreach (var booking in filteredBookings)
+        {
+            Console.WriteLine(booking);
+        }
+    }
+    
+    private void ShowingAllBookings()
+    {
+        Console.WriteLine("=== All Bookings ===");
+
+        // Print header
+        Console.WriteLine("BookingId | Passenger Name       | Route                        | Class   | Price");
+        Console.WriteLine(new string('-', 80));  // separator line
+
+        var bookings = _repository.GetAllBookings();
+
+        Console.WriteLine();
+        foreach (var b in bookings)
+        {
+            Console.WriteLine($"{b.BookingId,-9} | {b.Passenger.FullName,-20} | " +
+                              $"{b.Flight.DepartureCountry} -> {b.Flight.DestinationCountry,-24} | " +
+                              $"{b.Class,-7} | {b.Flight.Price,7:C}");
+        }
+    }
+
+    private int? GetUserChoiceOrNull()
     {
         Console.WriteLine("You entered the Admin Page !!");
         Console.WriteLine("Please Choose one of the following functionality");
