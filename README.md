@@ -7,6 +7,9 @@ Develop a .NET console application for an airport ticket booking system. This ap
 ## **Data Storage:**
 
 - Use the file system as the data storage layer.
+<br>Database Schema
+  <img width="1167" height="469" alt="image" src="https://github.com/user-attachments/assets/859041e8-40ed-4fdb-8eb7-a616328a5e6c" />
+
 
 ## **For the Passenger:**
 
