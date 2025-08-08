@@ -1,0 +1,55 @@
+{
+  "Price": {
+    "Type": "Number",
+    "Constraints": [
+      "Required",
+      "Must be a valid double value"
+    ]
+  },
+  "DepartureCountry": {
+    "Type": "Text",
+    "Constraints": [
+      "Required",
+      "Alphabetic characters only",
+      "Max length: 100"
+    ]
+  },
+  "ArrivalCountry": {
+    "Type": "Text",
+    "Constraints": [
+      "Required",
+      "Alphabetic characters only",
+      "Max length: 100"
+    ]
+  },
+  "DepartureDate": {
+    "Type": "DateTime",
+    "Constraints": [
+      "Required",
+      "Must be now or a future date",
+      "Should be in format YYYY-M-D H:MM (e.g., 2025-9-10 10:01)"
+    ]
+  },
+  "DepartureAirport": {
+    "Type": "Text",
+    "Constraints": [
+      "Required",
+      "Max length: 100"
+    ]
+  },
+  "ArrivalAirport": {
+    "Type": "Text",
+    "Constraints": [
+      "Required",
+      "Max length: 100"
+    ]
+  },
+  "Classes": {
+    "Type": "Text",
+    "Constraints": [
+      "Required",
+      "Each class must be a valid FlightClasses enum value",
+      "Multiple classes are separated by dash `-` (e.g., Economy-Business)"
+    ]
+  }
+}

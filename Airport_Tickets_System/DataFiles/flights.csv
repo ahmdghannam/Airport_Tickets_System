@@ -1,1 +1,6 @@
-id, price, departureCountry, destinationCountry, DepartureDate, DepartureAirport, ArrivalAirport, Classes
+id,price,departureCountry,destinationCountry,DepartureDate,DepartureAirport,ArrivalAirport,Classes
+1,442.82,UAE,Australia,2025-08-13,AIR902,AIR994,Economy-Business-First
+2,915.88,USA,Canada,2025-09-11,AIR963,AIR802,Economy-Business-First
+3,405.48,USA,Japan,2025-08-09,AIR405,AIR747,Economy-Business-First
+4,106.86,UAE,Japan,2025-08-22,AIR291,AIR738,Economy-Business-First
+5,664.6,USA,Japan,2025-10-05,AIR118,AIR362,Economy-Business-First

@@ -1,7 +1,7 @@
 using Airport_Tickets_System.models;
 using Airport_Tickets_System.states;
 
-namespace Airport_Tickets_System;
+namespace Airport_Tickets_System.UI;
 
 public class LoginPage
 {
@@ -33,6 +33,6 @@ public class LoginPage
             return null;
         }
 
-        return new User(username, password);
+        return new User(username.Trim(), password.Trim());
     }
 }
