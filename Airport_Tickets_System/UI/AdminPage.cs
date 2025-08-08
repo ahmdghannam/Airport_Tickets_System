@@ -12,21 +12,25 @@ public class AdminPage
 
     public void Start()
     {
-        var result = GetUserChoose();
+        var result = getUserChoiceOrNull();
         switch (result)
         {
             case 1:
+                Console.WriteLine("Show all bookings");
                 break;
             case 2:
+                Console.WriteLine("Show bookings with filter");
                 break;
             case 3:
                 ImportFlightData();
                 break;
-            default: throw new ArgumentOutOfRangeException();
+            default:
+                Console.WriteLine("Invalid input");
+                break;
         }
     }
 
-    private int GetUserChoose()
+    private int? getUserChoiceOrNull()
     {
         Console.WriteLine("You entered the Admin Page !!");
         Console.WriteLine("Please Choose one of the following functionality");
@@ -34,16 +38,17 @@ public class AdminPage
         Console.WriteLine("2. show bookings with filter parameters");
         Console.WriteLine("3. import flight data to the system");
         var choose = Console.ReadLine();
-        int.TryParse(choose, out var result);
-        return result;
+        var success = int.TryParse(choose, out var result);
+        return success ? result : null;
     }
 
     void ImportFlightData()
     {
-        Console.WriteLine("-- Please enter the absolute path of the csv file:\n" +
-                          "-- note that the file should be in this format:\n" +
-                          "-- price, departureCountry, destinationCountry, DepartureDate, DepartureAirport, ArrivalAirport, Classes\n" +
-                          "-- IMPORTANT: first line will be skipped as we assume it is a header line"
+        Console.WriteLine(
+            "-- Please enter the absolute path of the csv file:\n" +
+            "-- note that the file should be in this format:\n" +
+            "-- price, departureCountry, destinationCountry, DepartureDate, DepartureAirport, ArrivalAirport, Classes\n" +
+            "-- IMPORTANT: first line will be skipped as we assume it is a header line"
         );
         var absolutePath = Console.ReadLine();
         if (string.IsNullOrEmpty(absolutePath) || !File.Exists(absolutePath))
