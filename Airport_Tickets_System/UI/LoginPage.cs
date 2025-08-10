@@ -1,21 +1,21 @@
 using Airport_Tickets_System.models;
 using Airport_Tickets_System.states;
 
-namespace Airport_Tickets_System;
+namespace Airport_Tickets_System.UI;
 
 public class LoginPage
 {
     private readonly Repository _repository = new Repository();
-    public LoginState Login()
+
+    public LoginResult Login()
     {
         var user = ReadUserInput();
         if (user == null)
         {
-            return LoginState.LoggingInFailed;
+            return new LoginResult(LoginState.LoggingInFailed);
         }
 
         return _repository.ValidateUserCredentials(user);
-
     }
 
     private User? ReadUserInput()
@@ -33,6 +33,6 @@ public class LoginPage
             return null;
         }
 
-        return new User(username, password);
+        return new User(username.Trim(), password.Trim());
     }
 }
