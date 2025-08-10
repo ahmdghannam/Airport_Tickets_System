@@ -14,3 +14,4 @@ id,passengerId,flightId,class
 13,4,2,Economy
 14,7,5,First
 15,5,2,Business
+16,,3,Economy

@@ -6,13 +6,15 @@ namespace Airport_Tickets_System.UI
     {
         private static readonly LoginPage LoginPage = new LoginPage();
         private static readonly AdminPage AdminPage = new AdminPage();
+        private static readonly PassengerPage PassengerPage = new PassengerPage();
         static void Main(string[] args)
         {
-            var loginState = LoginPage.Login();
-            switch (loginState)
+            var loginResult = LoginPage.Login();
+            switch (loginResult.State)
             {
                 case LoginState.PassengerLoggedIn:
                     Console.WriteLine("Passenger logged in");
+                    PassengerPage.Start(loginResult.UserName!);
                     break;
                 case LoginState.AdminLoggedIn:
                     Console.WriteLine("Admin logged in");

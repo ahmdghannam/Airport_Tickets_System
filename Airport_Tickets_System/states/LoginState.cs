@@ -6,3 +6,9 @@ public enum LoginState
     AdminLoggedIn,
     LoggingInFailed,
 }
+
+public class LoginResult(LoginState state, string? username = null)
+{
+    public LoginState State { get; } = state;
+    public string? UserName { get; } = username;
+}

@@ -3,7 +3,7 @@ namespace Airport_Tickets_System.models;
 public class BookingDetail
 {
     public int BookingId { get; set; }
-    public Passenger Passenger { get; set; }
+    public Passenger? Passenger { get; set; }
     public Flight Flight { get; set; }
     public string Class { get; set; }
 

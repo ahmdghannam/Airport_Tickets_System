@@ -6,16 +6,16 @@ namespace Airport_Tickets_System.UI;
 public class LoginPage
 {
     private readonly Repository _repository = new Repository();
-    public LoginState Login()
+
+    public LoginResult Login()
     {
         var user = ReadUserInput();
         if (user == null)
         {
-            return LoginState.LoggingInFailed;
+            return new LoginResult(LoginState.LoggingInFailed);
         }
 
         return _repository.ValidateUserCredentials(user);
-
     }
 
     private User? ReadUserInput()
