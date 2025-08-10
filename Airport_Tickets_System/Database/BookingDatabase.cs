@@ -7,17 +7,19 @@ public class BookingDatabase
 {
     private readonly string[] _flightLines;
     private readonly string[] _passengerLines;
-    private readonly string[] _bookingLines;
+    private string[] _bookingLines;
+    private readonly string _bookingsFilePath;
 
     public BookingDatabase()
     {
-        string baseDir = AppContext.BaseDirectory;
-        string projectDir = Path.GetFullPath(Path.Combine(baseDir, @"..\..\.."));
-        string filesDir = Path.Combine(projectDir, Consts.Files.Package);
+        var baseDir = AppContext.BaseDirectory;
+        var projectDir = Path.GetFullPath(Path.Combine(baseDir, @"..\..\.."));
+        var filesDir = Path.Combine(projectDir, Consts.Files.Package);
+        _bookingsFilePath = Path.Combine(filesDir, Consts.Files.Bookings);
+        _bookingLines = File.ReadAllLines(_bookingsFilePath);
 
         _flightLines = File.ReadAllLines(Path.Combine(filesDir, Consts.Files.Flights));
         _passengerLines = File.ReadAllLines(Path.Combine(filesDir, Consts.Files.Passengers));
-        _bookingLines = File.ReadAllLines(Path.Combine(filesDir, Consts.Files.Bookings));
     }
 
     public List<BookingDetail> GetAllBookings()
@@ -78,14 +80,14 @@ public class BookingDatabase
     }
 
     public List<BookingDetail> FilterBookings(
-        string departureCountry = null,
-        string destinationCountry = null,
+        string? departureCountry = null,
+        string? destinationCountry = null,
         decimal? price = null,
         DateTime? departureDate = null,
-        string departureAirport = null,
-        string arrivalAirport = null,
-        string passengerName = null,
-        string bookingClass = null)
+        string? departureAirport = null,
+        string? arrivalAirport = null,
+        string? passengerName = null,
+        string? bookingClass = null)
     {
         var allBookings = GetAllBookings().AsQueryable();
 
@@ -115,5 +117,98 @@ public class BookingDatabase
             allBookings = allBookings.Where(b => b.Class == bookingClass);
 
         return allBookings.ToList();
+    }
+
+    public BookingDetail GetBookingById(int bookingId)
+    {
+        var allBookings = GetAllBookings();
+        return allBookings.FirstOrDefault(b => b.BookingId == bookingId);
+    }
+
+    public bool AddBooking(BookingDetail booking)
+    {
+        try
+        {
+            var bookingDataLines = File.ReadAllLines(_bookingsFilePath).ToList();
+
+            string newLine = $"{booking.BookingId},{booking.Passenger?.Id},{booking.Flight.Id},{booking.Class}";
+
+            bookingDataLines.Add(newLine);
+
+            File.WriteAllLines(_bookingsFilePath, bookingDataLines);
+
+            _bookingLines = bookingDataLines.ToArray();
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            return false;
+        }
+    }
+
+    public bool RemoveBooking(int bookingId)
+    {
+        try
+        {
+            var bookingDataLines = File.ReadAllLines(_bookingsFilePath).ToList();
+
+            bool removed = bookingDataLines.RemoveAll(line =>
+            {
+                if (line.StartsWith("id")) 
+                    return false;
+
+                var parts = line.Split(',');
+                if (int.TryParse(parts[0], out int id))
+                {
+                    return id == bookingId;
+                }
+
+                return false;
+            }) > 0;
+
+            if (!removed)
+                return false;
+
+            File.WriteAllLines(_bookingsFilePath, bookingDataLines);
+
+            _bookingLines = bookingDataLines.ToArray();
+
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public bool UpdateBooking(BookingDetail booking)
+    {
+        try
+        {
+            var bookingDataLines = File.ReadAllLines(_bookingsFilePath).ToList();
+
+            int index = bookingDataLines.FindIndex(line =>
+            {
+                if (line.StartsWith("id")) return false;
+                var parts = line.Split(',');
+                return int.TryParse(parts[0], out int id) && id == booking.BookingId;
+            });
+
+            if (index == -1)
+                return false;
+
+            bookingDataLines[index] = $"{booking.BookingId},{booking.Passenger.Id},{booking.Flight.Id},{booking.Class}";
+
+            File.WriteAllLines(_bookingsFilePath, bookingDataLines);
+
+            _bookingLines = bookingDataLines.ToArray();
+
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }
